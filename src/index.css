@@ -67,6 +67,11 @@ i:hover, #break-length:hover, #session-length:hover {
   font-size: x-large;
 }
 
+#mobile-buttons {
+  visibility: hidden;
+  display: flex;
+  justify-content: space-between;
+}
 
 .btn-group {
   justify-self: center;
@@ -80,12 +85,16 @@ i:hover, #break-length:hover, #session-length:hover {
     width: 100vw;
   }
 
-  .number {
-    font-size: medium;
-  }
-  
+  #mobile-buttons {
+    visibility: visible;
+    margin-bottom: 12px;
+  }  
   #title {
     text-align: center;
+  }
+
+  .number {
+    visibility: hidden;
   }
 }
 #timer-label {

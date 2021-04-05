@@ -177,7 +177,20 @@ class Timer extends React.Component {
         <div class="text-center" id="session-label">
             Work Length
           </div>
-          <div></div>
+          <div id="mobile-buttons">
+            <div>
+              <button id="session-decrement" onClick={this.sessionDec}><i class="far fa-minus-square"></i></button>
+              {this.state.session}
+              <button id="session-increment" onClick={this.sessionInc}><i class="far fa-plus-square"></i></button>
+            </div>
+            <div>
+              <button id="break-decrement" onClick={this.breakDec}><i class="far fa-minus-square"></i></button>
+              {this.state.break}
+              <button id="break-increment" onClick={this.breakDec}><i class="far fa-plus-square"></i></button>
+            
+            </div>
+            
+          </div>
           <div class="text-center" id="break-label">
             Break Length
           </div>
