@@ -11,7 +11,15 @@ button {
   color: inherit;
 }
 
+.input-group-text {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+}
 
+input {
+  text-align: center;
+}
 
 .figure {
   border-radius: 12px;
@@ -68,10 +76,6 @@ i:hover, #break-length:hover, #session-length:hover {
   font-family: "B612 Mono", monospace;
 }
 
-#mobile-break-label {
-  margin-left: 4px;
-  border-radius: 4px 0 0 4px;
-}
 
 .number {
   font-size: x-large;

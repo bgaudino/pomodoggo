@@ -189,14 +189,14 @@ class Timer extends React.Component {
             <button id="session-increment" onClick={this.sessionInc}><i className="fas fa-plus"></i></button>
           </div>
           <div className="input-group mobile-buttons">
-              <span className="input-group-text">Work:</span>
+              <span className="input-group-text">Work</span>
               <button id="session-decrement" onClick={this.sessionDec}><i className="fas fa-minus"></i></button>
               <input className="form-control" type="number" value={this.state.session} readOnly></input>              
               <button id="session-increment" onClick={this.sessionInc}><i className="fas fa-plus"></i></button>
           </div>
           
           <div className="input-group mobile-buttons">
-              <span id="mobile-break-label" className="input-group-text">Break:</span>
+              <span id="mobile-break-label" className="input-group-text">Break</span>
               <button id="break-decrement" onClick={this.breakDec}><i className="fas fa-minus"></i></button>
               <input className="form-control" type="number" value={this.state.break} readOnly></input>
               <button id="break-increment" onClick={this.breakInc}><i className="fas fa-plus"></i></button>
