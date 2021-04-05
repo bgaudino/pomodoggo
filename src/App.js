@@ -165,12 +165,12 @@ class Timer extends React.Component {
 
         <div id="speech">
           <div>
-            <div className="bubble"><span id="dog-speech">{dogSpeech}</span></div>
-            <div className="pointer"></div>
+            <div className="bubble shadow"><span id="dog-speech">{dogSpeech}</span></div>
+            <div className="pointer "></div>
           </div>
         </div>
         <figure className="figure text-center">
-          <img src="marylois.png" id="dog" className="figure-img img-thumbnail rounded" alt="Dog" />
+          <img src="marylois.png" id="dog" className="figure-img img-thumbnail rounded shadow-sm" alt="Dog" />
           <figcaption className="figure-caption">Labradoodle</figcaption>
         </figure>
 
