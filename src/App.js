@@ -210,7 +210,6 @@ fetch('https://dog.ceo/api/breeds/image/random')
     breed = breed.charAt(0).toUpperCase() + breed.slice(1);
     document.querySelector('figcaption').innerText = breed;
   })
-  .catch(document.querySelector('figcaption').innerText = 'Oops, something went wrong.');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
