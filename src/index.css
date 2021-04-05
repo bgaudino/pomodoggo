@@ -97,7 +97,7 @@ i:hover, #break-length:hover, #session-length:hover {
     grid-column: 1/4;
   }
   .number {
-    visibility: hidden;
+    display: none;
   }
 }
 #timer-label {
