@@ -127,7 +127,6 @@ class Timer extends React.Component {
     } else {
       root.style.backgroundColor = '#4783ff';
     }
-    let mode = this.state.mode.charAt(0).toUpperCase() + this.state.mode.slice(1);
     
     let timeLeft = '00:00';
     if (this.state.timeLeft > 0) {
