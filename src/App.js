@@ -163,6 +163,7 @@ class Timer extends React.Component {
         <div id="time-left">
           {timeLeft}
         </div>
+
         <div id="speech">
           <div>
             <div class="bubble"><span id="dog-speech">{dogSpeech}</span></div>
@@ -173,26 +174,30 @@ class Timer extends React.Component {
           <img src="marylois.png" id="dog" class="figure-img img-thumbnail rounded" alt="Dog" />
           <figcaption class="figure-caption">Labradoodle</figcaption>
         </figure>
-        <div class="text-center" id="timer-label">{mode}</div>
-          <div class="text-center" id="session-label">
+
+        <div class="text-center" id="session-label">
             Work Length
           </div>
-        <div class="text-center" id="break-label">
+          <div></div>
+          <div class="text-center" id="break-label">
             Break Length
           </div>
+        
+        
           <div class="number text-center" id="session-length">
              <button id="session-decrement" onClick={this.sessionDec}><i class="far fa-minus-square"></i></button>
             {this.state.session}
             <button id="session-increment" onClick={this.sessionInc}><i class="far fa-plus-square"></i></button>
           </div>
+          <div class="btn-group" role="group">
+          <button type="button" class="btn btn-light" id="start_stop" onClick={this.startStop}>{startOrStop}</button>
+          <button type="button" class="btn btn-secondary" id="fetch">Fetch&nbsp;<i class="fas fa-bone"></i></button>
+          <button type="button" class="btn btn-dark" id="reset" onClick={this.reset}>Reset</button>
+        </div>
         <div class="number text-center" id="break-length"><button id="break-decrement"onClick={this.breakDec}><i class="far fa-minus-square"></i></button>
         {this.state.break}
         <button id="break-increment" onClick={this.breakInc}><i class="far fa-plus-square"></i></button></div>
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-light" id="start_stop" onClick={this.startStop}>{startOrStop}</button>
-          <button type="button" class="btn btn-secondary" id="fetch"><i class="fas fa-bone"></i>&nbsp;Fetch&nbsp;<i class="fas fa-bone"></i></button>
-          <button type="button" class="btn btn-dark" id="reset" onClick={this.reset}>Reset</button>
-        </div>
+       
           
       </div>
     )
