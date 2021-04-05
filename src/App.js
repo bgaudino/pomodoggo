@@ -1,3 +1,4 @@
+import { waitForElementToBeRemoved } from '@testing-library/dom';
 import React from 'react';
 import './App.css';
 
@@ -210,9 +211,20 @@ fetch('https://dog.ceo/api/breeds/image/random')
     const img = document.querySelector('img');
     img.src = dog.message;
     let arr = dog.message.split('/');
-    let breed = arr[4].replace('-', ' ');
-    breed = breed.charAt(0).toUpperCase() + breed.slice(1);
-    document.querySelector('figcaption').innerText = breed;
+    console.log(arr[4]);
+    const regexTwo = /-.+/g;
+    const regexOne = /.+-/g;
+    let wordTwo = arr[4].replace(regexTwo, '');
+    let wordOne = arr[4].replace(regexOne, '');
+    wordOne = wordOne.charAt(0).toUpperCase() + wordOne.slice(1);
+    wordTwo = wordTwo.charAt(0).toUpperCase() + wordTwo.slice(1);
+    if (wordTwo === wordOne) {
+      wordTwo = '';
+    }
+    let breed = `${wordOne} ${wordTwo}`;
+    console.log(arr[4]);
+    document.querySelector('figcaption').innerText = breed.trim();
+
   })
 }
 
