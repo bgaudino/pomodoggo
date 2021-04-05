@@ -199,7 +199,7 @@ class Timer extends React.Component {
               <span id="mobile-break-label" className="input-group-text">Break:</span>
               <button id="break-decrement" onClick={this.breakDec}><i className="fas fa-minus"></i></button>
               <input className="form-control" type="number" value={this.state.break} readOnly></input>
-              <button id="break-increment" onClick={this.breakDec}><i className="fas fa-plus"></i></button>
+              <button id="break-increment" onClick={this.breakInc}><i className="fas fa-plus"></i></button>
           </div>
           
           <div className="btn-group" role="group">
