@@ -4,9 +4,14 @@ hr {
 
 button {
   background-color: inherit;
-  border: none;
+  border: 1px solid white;
+  width: fit-content;
+  min-width: 40px;
+  border-radius: 4px;
   color: inherit;
 }
+
+
 
 .figure {
   border-radius: 12px;
@@ -63,15 +68,22 @@ i:hover, #break-length:hover, #session-length:hover {
   font-family: "B612 Mono", monospace;
 }
 
+#mobile-break-label {
+  margin-left: 4px;
+  border-radius: 4px 0 0 4px;
+}
+
 .number {
   font-size: x-large;
 }
 
-#mobile-buttons {
-  visibility: hidden;
-  display: flex;
-  justify-content: center;
+.mobile-buttons {
+  display: none;
+  grid-column: 1/4;
+  margin-bottom: 12px;
 }
+
+
 
 .btn-group {
   justify-self: center;
@@ -85,15 +97,20 @@ i:hover, #break-length:hover, #session-length:hover {
     width: 100vw;
   }
 
-  #mobile-buttons {
-    visibility: visible;
-    margin-bottom: 12px;
+  .mobile-buttons {
+    display: flex;
   }  
+
+  #session-label, #break-label {
+    display: none;
+  }
+
   #title {
     text-align: center;
   }
   .btn-group
   {
+    width: 100%;
     grid-column: 1/4;
   }
   .number {

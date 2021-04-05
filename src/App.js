@@ -165,52 +165,52 @@ class Timer extends React.Component {
 
         <div id="speech">
           <div>
-            <div class="bubble"><span id="dog-speech">{dogSpeech}</span></div>
-            <div class="pointer"></div>
+            <div className="bubble"><span id="dog-speech">{dogSpeech}</span></div>
+            <div className="pointer"></div>
           </div>
         </div>
-        <figure class="figure text-center">
-          <img src="marylois.png" id="dog" class="figure-img img-thumbnail rounded" alt="Dog" />
-          <figcaption class="figure-caption">Labradoodle</figcaption>
+        <figure className="figure text-center">
+          <img src="marylois.png" id="dog" className="figure-img img-thumbnail rounded" alt="Dog" />
+          <figcaption className="figure-caption">Labradoodle</figcaption>
         </figure>
 
-        <div class="text-center" id="session-label">
+        <div className="text-center" id="session-label">
             Work Length
           </div>
-          <div id="mobile-buttons">
-            <div>
-              <button id="session-decrement" onClick={this.sessionDec}><i class="far fa-minus-square"></i></button>
-              {this.state.session}
-              <button id="session-increment" onClick={this.sessionInc}><i class="far fa-plus-square"></i></button>
-            </div>
-            <div>
-              <button id="break-decrement" onClick={this.breakDec}><i class="far fa-minus-square"></i></button>
-              {this.state.break}
-              <button id="break-increment" onClick={this.breakDec}><i class="far fa-plus-square"></i></button>
-            
-            </div>
-            
-          </div>
-          <div class="text-center" id="break-label">
+          <div></div>
+          <div className="text-center" id="break-label">
             Break Length
           </div>
         
         
-          <div class="number text-center" id="session-length">
-             <button id="session-decrement" onClick={this.sessionDec}><i class="far fa-minus-square"></i></button>
-            {this.state.session}
-            <button id="session-increment" onClick={this.sessionInc}><i class="far fa-plus-square"></i></button>
+          <div className="number text-center" id="session-length">
+             <button id="session-decrement" onClick={this.sessionDec}><i className="fas fa-minus"></i></button>
+             &nbsp;{this.state.session}&nbsp;
+            <button id="session-increment" onClick={this.sessionInc}><i className="fas fa-plus"></i></button>
           </div>
-          <div class="btn-group" role="group">
-          <button type="button" class="btn btn-light" id="start_stop" onClick={this.startStop}>{startOrStop}</button>
-          <button type="button" class="btn btn-secondary" id="fetch">Fetch&nbsp;<i class="fas fa-bone"></i></button>
-          <button type="button" class="btn btn-dark" id="reset" onClick={this.reset}>Reset</button>
-        </div>
-        <div class="number text-center" id="break-length"><button id="break-decrement"onClick={this.breakDec}><i class="far fa-minus-square"></i></button>
-        {this.state.break}
-        <button id="break-increment" onClick={this.breakInc}><i class="far fa-plus-square"></i></button></div>
-       
+          <div className="input-group mobile-buttons">
+              <span className="input-group-text">Work:</span>
+              <button id="session-decrement" onClick={this.sessionDec}><i className="fas fa-minus"></i></button>
+              <input className="form-control" type="number" value={this.state.session} readOnly></input>              
+              <button id="session-increment" onClick={this.sessionInc}><i className="fas fa-plus"></i></button>
+          </div>
           
+          <div className="input-group mobile-buttons">
+              <span id="mobile-break-label" className="input-group-text">Break:</span>
+              <button id="break-decrement" onClick={this.breakDec}><i className="fas fa-minus"></i></button>
+              <input className="form-control" type="number" value={this.state.break} readOnly></input>
+              <button id="break-increment" onClick={this.breakDec}><i className="fas fa-plus"></i></button>
+          </div>
+          
+          <div className="btn-group" role="group">
+          <button type="button" className="btn btn-light" id="start_stop" onClick={this.startStop}>{startOrStop}</button>
+          <button type="button" className="btn btn-secondary" id="fetch">Fetch&nbsp;<i className="fas fa-bone"></i></button>
+          <button type="button" className="btn btn-dark" id="reset" onClick={this.reset}>Reset</button>
+        </div>
+        <div className="number text-center" id="break-length"><button id="break-decrement"onClick={this.breakDec}><i className="fas fa-minus"></i></button>
+        &nbsp;{this.state.break}&nbsp;
+        <button id="break-increment" onClick={this.breakInc}><i className="fas fa-plus"></i></button></div>
+
       </div>
     )
   }
