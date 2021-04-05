@@ -1,4 +1,3 @@
-import { waitForElementToBeRemoved } from '@testing-library/dom';
 import React from 'react';
 import './App.css';
 
