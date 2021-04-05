@@ -65,8 +65,6 @@ class Timer extends React.Component {
   
   reset() {
         clearInterval(this.interval);
-    document.querySelector('#beep').pause();
-    document.querySelector('#beep').currentTime = 0;
     this.setState({
       session: 25,
       break: 5,
@@ -81,7 +79,9 @@ class Timer extends React.Component {
       timeLeft: this.state.timeLeft - 1000
     })
     if (this.state.timeLeft === 0) {
- fetchDog();      document.getElementById('beep').play();
+      fetchDog();      
+      let bark = new Audio('./bark.mp3');
+      bark.play();
       setTimeout(() => {
         if (this.state.mode === 'work') {
       this.setState({
