@@ -80,9 +80,10 @@ i:hover, #break-length:hover, #session-length:hover {
     width: 100vw;
   }
 
-
-
-
+  .number {
+    font-size: medium;
+  }
+  
   #title {
     text-align: center;
   }
