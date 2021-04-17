@@ -142,9 +142,6 @@ class App extends React.Component {
         dog: dog.message,
         breed: breed
       })
-
-      let bark = new Audio('./bark.mp3');
-      bark.play();
     })
   }
   
