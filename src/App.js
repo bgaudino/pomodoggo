@@ -1,7 +1,14 @@
 import React from 'react';
 import './App.css';
 
-class Timer extends React.Component {
+import { Timer } from './timer.js';
+import { Dog } from './dog.js';
+import { Speech } from './speech.js';
+import { SessionButtons, BreakButtons, ControlButtons } from './buttons.js';
+import { MobileSessionButtons, MobileBreakButtons } from './mobile.js';
+
+class App extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -9,7 +16,9 @@ class Timer extends React.Component {
       session: 25,
       break: 5,
       mode: 'work',
-      started: false
+      started: false, 
+      dog: './marylois.jpg',
+      breed: 'Labradoodle'
     }
     this.breakInc = this.breakInc.bind(this)
     this.breakDec = this.breakDec.bind(this)
@@ -18,8 +27,8 @@ class Timer extends React.Component {
     this.reset = this.reset.bind(this)
     this.startStop = this.startStop.bind(this)
     this.countdown = this.countdown.bind(this)
+    this.fetchDog = this.fetchDog.bind(this)
   }
-  
   
   breakInc() {
     if (this.state.break < 60) {
@@ -64,7 +73,7 @@ class Timer extends React.Component {
   }
   
   reset() {
-        clearInterval(this.interval);
+    clearInterval(this.interval);
     this.setState({
       session: 25,
       break: 5,
@@ -79,13 +88,13 @@ class Timer extends React.Component {
       timeLeft: this.state.timeLeft - 1000
     })
     if (this.state.timeLeft === 0) {
-      fetchDog();      
+      this.fetchDog();      
       let bark = new Audio('./bark.mp3');
       bark.play();
       setTimeout(() => {
         if (this.state.mode === 'work') {
       this.setState({
-        mode: 'break 🏖',
+        mode: 'break',
         timeLeft: this.state.break * 60000
       })
     } else {
@@ -113,6 +122,31 @@ class Timer extends React.Component {
     }
   }
   
+  fetchDog() {
+    fetch('https://dog.ceo/api/breeds/image/random')
+    .then(response => response.json())
+    .then(dog => {
+      let arr = dog.message.split('/');
+      const regexTwo = /-.+/g;
+      const regexOne = /.+-/g;
+      let wordTwo = arr[4].replace(regexTwo, '');
+      let wordOne = arr[4].replace(regexOne, '');
+      wordOne = wordOne.charAt(0).toUpperCase() + wordOne.slice(1);
+      wordTwo = wordTwo.charAt(0).toUpperCase() + wordTwo.slice(1);
+      if (wordTwo === wordOne) {
+        wordTwo = '';
+      }
+      let breed = `${wordOne} ${wordTwo}`;
+
+      this.setState({
+        dog: dog.message,
+        breed: breed
+      })
+
+      let bark = new Audio('./bark.mp3');
+      bark.play();
+    })
+  }
   
   render() {
     let startOrStop = '';
@@ -159,95 +193,21 @@ class Timer extends React.Component {
           <h1>🐶 pomoDoggo </h1>
           <hr />
         </div>
-        <div id="time-left">
-          {timeLeft}
-        </div>
-
-        <div id="speech">
-          <div>
-            <div className="bubble shadow"><span id="dog-speech">{dogSpeech}</span></div>
-            <div className="pointer "></div>
-          </div>
-        </div>
-        <figure className="figure text-center">
-          <img src="marylois.png" id="dog" className="figure-img img-thumbnail rounded shadow-sm" alt="Dog" />
-          <figcaption className="figure-caption">Labradoodle</figcaption>
-        </figure>
-
-        <div className="text-center" id="session-label">
-            Work Length
-          </div>
-          <div></div>
-          <div className="text-center" id="break-label">
-            Break Length
-          </div>
-        
-        
-          <div className="number text-center" id="session-length">
-             <button id="session-decrement" onClick={this.sessionDec}><i className="fas fa-minus"></i></button>
-             &nbsp;{this.state.session}&nbsp;
-            <button id="session-increment" onClick={this.sessionInc}><i className="fas fa-plus"></i></button>
-          </div>
-          <div className="input-group mobile-buttons">
-              <span className="input-group-text">Work</span>
-              <button id="session-decrement" onClick={this.sessionDec}><i className="fas fa-minus"></i></button>
-              <input className="form-control" type="number" value={this.state.session} readOnly></input>              
-              <button id="session-increment" onClick={this.sessionInc}><i className="fas fa-plus"></i></button>
-          </div>
-          
-          <div className="input-group mobile-buttons">
-              <span id="mobile-break-label" className="input-group-text">Break</span>
-              <button id="break-decrement" onClick={this.breakDec}><i className="fas fa-minus"></i></button>
-              <input className="form-control" type="number" value={this.state.break} readOnly></input>
-              <button id="break-increment" onClick={this.breakInc}><i className="fas fa-plus"></i></button>
-          </div>
-          
-          <div className="btn-group" role="group">
-          <button type="button" className="btn btn-light" id="start_stop" onClick={this.startStop}>{startOrStop}</button>
-          <button type="button" className="btn btn-secondary" id="fetch">Fetch&nbsp;<i className="fas fa-bone"></i></button>
-          <button type="button" className="btn btn-dark" id="reset" onClick={this.reset}>Reset</button>
-        </div>
-        <div className="number text-center" id="break-length"><button id="break-decrement"onClick={this.breakDec}><i className="fas fa-minus"></i></button>
-        &nbsp;{this.state.break}&nbsp;
-        <button id="break-increment" onClick={this.breakInc}><i className="fas fa-plus"></i></button></div>
-
+        <Timer timeLeft={timeLeft} />
+        <Speech dogSpeech={dogSpeech} />
+        <Dog source={this.state.dog} breed={this.state.breed}/>
+        <MobileSessionButtons session={this.state.session} sessionInc={this.sessionInc} sessionDec={this.sessionDec} />
+        <MobileBreakButtons break={this.state.break} breakInc={this.breakInc} breakDec={this.breakDec}/>
+        <div className="text-center" id="session-label">Work Length</div>
+        <div></div>
+        <div className="text-center" id="break-label">Break Length</div>
+        <SessionButtons session={this.state.session} sessionInc={this.sessionInc} sessionDec={this.sessionDec}/>
+        <ControlButtons function={this.startStop} label={startOrStop} reset={this.reset} fetchDog={this.fetchDog}/>
+        <BreakButtons break={this.state.break} breakInc={this.breakInc} breakDec={this.breakDec} />
+        <audio source="./bark.mp3" />
       </div>
     )
   }
 }
 
-function fetchDog() {
-fetch('https://dog.ceo/api/breeds/image/random')
-  .then(response => response.json())
-  .then(dog => {
-    const img = document.querySelector('img');
-    img.src = dog.message;
-    let arr = dog.message.split('/');
-    console.log(arr[4]);
-    const regexTwo = /-.+/g;
-    const regexOne = /.+-/g;
-    let wordTwo = arr[4].replace(regexTwo, '');
-    let wordOne = arr[4].replace(regexOne, '');
-    wordOne = wordOne.charAt(0).toUpperCase() + wordOne.slice(1);
-    wordTwo = wordTwo.charAt(0).toUpperCase() + wordTwo.slice(1);
-    if (wordTwo === wordOne) {
-      wordTwo = '';
-    }
-    let breed = `${wordOne} ${wordTwo}`;
-    console.log(arr[4]);
-    document.querySelector('figcaption').innerText = breed.trim();
-
-  })
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  document.querySelector('#fetch').onclick = function() {
-    fetchDog();
-  };
-
-})
-
-
-
-export default Timer;
+export default App;
