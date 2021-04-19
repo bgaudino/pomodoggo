@@ -18,7 +18,7 @@ class App extends React.Component {
       mode: 'work',
       started: false, 
       dog: './spinner.gif',
-      breed: 'Labradoodle'
+      breed: '...loading'
     }
     this.breakInc = this.breakInc.bind(this)
     this.breakDec = this.breakDec.bind(this)
