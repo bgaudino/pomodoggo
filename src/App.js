@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 
-import { Timer } from './timer.js';
-import { Dog } from './dog.js';
-import { Speech } from './speech.js';
-import { SessionButtons, BreakButtons, ControlButtons } from './buttons.js';
-import { MobileSessionButtons, MobileBreakButtons } from './mobile.js';
+import { Timer } from './components/timer.js';
+import { Dog } from './components/dog.js';
+import { Speech } from './components/speech.js';
+import { SessionButtons, BreakButtons, ControlButtons } from './components/buttons.js';
+import { MobileSessionButtons, MobileBreakButtons } from './components/mobile.js';
 
 class App extends React.Component {
 
@@ -17,7 +17,7 @@ class App extends React.Component {
       break: 5,
       mode: 'work',
       started: false, 
-      dog: './marylois.jpg',
+      dog: './spinner.gif',
       breed: 'Labradoodle'
     }
     this.breakInc = this.breakInc.bind(this)
@@ -30,6 +30,10 @@ class App extends React.Component {
     this.fetchDog = this.fetchDog.bind(this)
   }
   
+  componentDidMount = () => {
+    this.fetchDog();
+  }
+
   breakInc() {
     if (this.state.break < 60) {
       this.setState({
@@ -185,7 +189,7 @@ class App extends React.Component {
     }
     
     return (
-      <div id="app">
+      <div id="app">œ
         <div id="title">
           <h1>🐶 pomoDoggo </h1>
           <hr />
