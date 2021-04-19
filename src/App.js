@@ -189,7 +189,7 @@ class App extends React.Component {
     }
     
     return (
-      <div id="app">œ
+      <div id="app">
         <div id="title">
           <h1>🐶 pomoDoggo </h1>
           <hr />
