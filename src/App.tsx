@@ -10,13 +10,13 @@ import SpeechBubble from './components/SpeechBubble';
 
 function App() {
   const [dog, setDog] = React.useState('');
-  const [workLength, setWorkLength] = usePeristedState('workLength', 10);
+  const [workLength, setWorkLength] = usePeristedState('workLength', 25);
   const [breakLength, setBreakLength] = usePeristedState('breakLength', 5);
   const [secondsRemaining, setSecondsRemaining] = usePeristedState(
     'secondsRemaining',
-    workLength
+    workLength * 60
   );
-  const [isWorking, setIsWorking] = usePeristedState('isWorking', false);
+  const [isWorking, setIsWorking] = usePeristedState('isWorking', true);
   const [isActive, setIsActive] = React.useState(false);
   const interval = React.useRef<number>();
 
