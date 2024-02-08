@@ -18,6 +18,7 @@ function App() {
   );
   const [isWorking, setIsWorking] = usePeristedState('isWorking', true);
   const [isActive, setIsActive] = React.useState(false);
+  const [showSliders, setShowSliders] = usePeristedState('showSliders', false);
   const interval = React.useRef<number>();
 
   const updateDog = React.useCallback(() => {
@@ -89,14 +90,32 @@ function App() {
             <Timer seconds={secondsRemaining} />
             <SpeechBubble isActive={isActive} isWorking={isWorking} />
             <Dog dog={dog} />
+            <button
+              className="btn btn-link d-md-none"
+              onClick={() => setShowSliders((prev) => !prev)}
+            >
+              {showSliders ? (
+                <>
+                  <span className="mx-1">Hide Sessions</span>
+                  <i className="fa-solid fa-caret-up"></i>
+                </>
+              ) : (
+                <>
+                  <span className="mx-1">Change Session Length</span>
+                  <i className="fa-solid fa-caret-down"></i>
+                </>
+              )}
+            </button>
             <div className="row">
               <Slider
                 label="Work length"
+                show={showSliders}
                 value={workLength}
                 onChange={(e) => setLength(e, 'work')}
               />
               <Slider
                 label="Break length"
+                show={showSliders}
                 value={breakLength}
                 onChange={(e) => setLength(e, 'break')}
               />

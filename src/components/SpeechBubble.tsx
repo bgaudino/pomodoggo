@@ -14,7 +14,7 @@ interface SpeechBubbleProps {
 export default function SpeechBubble({isActive, isWorking}: SpeechBubbleProps) {
   const text = getText(isActive, isWorking);
   return (
-    <div id="speech">
+    <div id="speech" className="d-none d-md-block">
       <div className="bubble shadow">
         <span id="dog-speech">{text}</span>
       </div>
